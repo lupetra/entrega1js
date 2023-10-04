@@ -4,7 +4,6 @@
 //pagina logueo//
 let nombreRegistrado = prompt("Ingrese nombre")
 let apellidoRegistrado = prompt("Ingrese apellido")
-
 if((nombreRegistrado !== "") && (apellidoRegistrado !== "")){
     let nombreBienvenido = `Bienvenido ${nombreRegistrado} a nuestro sitio`
     alert(nombreBienvenido)
@@ -13,7 +12,7 @@ if((nombreRegistrado !== "") && (apellidoRegistrado !== "")){
                }
  
 
-//agregar productos //
+//agregar productos 1//
 
 function cargarProductos() {
     let Productos=["silla","sillon"]
@@ -47,86 +46,67 @@ let precioConIva = precioProducto * IVA;
 alert(`el precio final con impuesto es: ${precioConIva}`)
 
 
-//ENTREGA 2//
+// ENTREGA 2 //
 
-
-//crear un producto nuevo//
-
-const db = [ 
-class Producto{
-
-    constructor(nombre, material, medida, precio){
-            this.nombre = nombre;
-            this.material = descripcion;
-            this.medida = stock;
-            this.precio = precioU
-
-      }
-
-}]
-
-
-function crearProductos () {
-    let nombre = prompt("ingrese nombre de producto")
-    let material = parseInt (prompt("ingrese material")
-    let medidas = parseFloat (prompt("Ingrese medida"))
-    let precio = prompt("ingrese precio")
-    let imagen = prompt("ingrese imagen")
-
-    const productoCreado = new Producto (nombre, material, medidas, precio, imagen)
-    pusheamos a la data base
-
-db.push(productoCreado)
-
-console.table(db)
-
+// crear un producto nuevo
+class Producto {
+    constructor(nombre, material, medida, precio) {
+        this.nombre = nombre;
+        this.material = material;
+        this.medida = medida;
+        this.precio = precio;
+    }
 }
 
+const db = [];
 
+function crearProductos() {
+    let nombre = prompt("Ingrese nombre de producto");
+    let material = prompt("Ingrese material");
+    let medidas = parseFloat(prompt("Ingrese medida"));
+    let precio = parseFloat(prompt("Ingrese precio"));
 
-cargarDom ()
+    const productoCreado = new Producto(nombre, material, medidas, precio);
+    db.push(productoCreado);
 
-const productos = [ 
-    { 
-    id="1"; 
-    nombre: "Escritorio",
-    material: "madera",
-    medidas: "0.80mx1.40m",
-    precio: "$28512",
-    imagen: "./img/foto.png"
-    
-    }
-    
+    console.table(db);
+}
+
+crearProductos();
+
+const productos = [
     {
-    
-    id="2"; 
-    nombre: "Sofa",
-    material: "tela",
-    medidas: "0.40mx0.60m",
-    precio: "$20192",
-    imagen: "./img/foto.png"
-        
+        id: "1",
+        nombre: "Escritorio",
+        material: "madera",
+        medidas: "0.80mx1.40m",
+        precio: 28512,
+        imagen: "./img/foto.png"
+    },
+    {
+        id: "2",
+        nombre: "Sofa",
+        material: "tela",
+        medidas: "0.40mx0.60m",
+        precio: 20192,
+        imagen: "./img/foto.png"
     }
-    
-    ]
+];
 
-const contenedor = document.getElementById("contenedorProductos")
-    
-productos.forEach((producto) ⇒ {
-    let contenedorProducto = document.createElement("div")
+const contenedor = document.getElementById("contenedorProductos");
 
-contenedorProductos.innerHTML=  '
-<div class="card-body">
-         <img src="..." class="card-img-top" alt="...">        
-          <h5 class="card-title">Titulo: ${producto.nombre}</h5>
-          <p class="card-text"> materiales: ${producto.material}</p>
-          <p class="card-text"> medidas: ${producto.medidas}</p>
-          <p class="card-text"> precio: ${producto.precio}</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
+productos.forEach((producto) => {
+    let contenedorProducto = document.createElement("div");
+    contenedorProducto.innerHTML = `
+        <div class="card-body">
+            <img src="${producto.imagen}" class="card-img-top" alt="...">
+            <h5 class="card-title">Titulo: ${producto.nombre}</h5>
+            <p class="card-text">Materiales: ${producto.material}</p>
+            <p class="card-text">Medidas: ${producto.medidas}</p>
+            <p class="card-text">Precio: $${producto.precio}</p>
+            <a href="#" class="btn btn-primary">Comprar</a>
         </div>
-      </div> 
+    </div>`;
 
-
-contenedor.appendChild.(contenedorProducto)
-
-})
+    contenedor.appendChild(contenedorProducto);
+});
